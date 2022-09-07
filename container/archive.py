@@ -146,7 +146,9 @@ class TarFileWriter(object):
       mode=mode,
       fileobj=self.fileobj,
       # https://github.com/bazelbuild/rules_docker/issues/1602
-      format=tarfile.PAX_FORMAT)
+      format=tarfile.PAX_FORMAT,
+      copybufsize=10*1024*1024,
+    )
     self.members = set([])
     self.directories = set([])
 
